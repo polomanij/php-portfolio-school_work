@@ -21,7 +21,7 @@ class Router {
         $uri = $_SERVER['REQUEST_URI'];
         
         if (!empty($uri)) {
-            return $uri;
+            return trim($uri, '/');
         }
     }
 
@@ -35,11 +35,14 @@ class Router {
         foreach ($this->routes as $uriPattern => $path) {
             //Comparing uri by uriPattern
             if (preg_match("~$uriPattern~", $uri)) {
+                echo $uri."<br>";
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+                echo $internalRoute." <br>";
                 $segments = explode("/", $internalRoute);
                 
                 //Getting controller name and action name
                 $controllerName = ucfirst(array_shift($segments)).'Controller';
+                echo "$controllerName";
                 $actionName = 'action'.ucfirst(array_shift($segments));
                 
                 //Including controller file

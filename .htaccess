@@ -1,9 +1,12 @@
 AddDefaultCharset utf-8
 
 RewriteEngine on
-RewriteBase /
+RewriteBase /kruglikov/theme_6_mvc/php-portfolio-school_work/
 
 RewriteCond %{REQUEST_FILE} !-d
 RewriteCond %{REQUEST_FILE} !-f
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png)$ [NC]
+
+AddType text/css *.css
 
 RewriteRule ^(.*)$ index.php

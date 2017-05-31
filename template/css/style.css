@@ -1,3 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: #269abc;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    margin-bottom: 25px;
+}
+
+header {
+    min-height: 75px;
+    background: coral;
+    text-align: center;
+}
+
+.header-nav {
+    height: 40px;
+    background: #8c8c8c;
+}
+
+.header-menu {
+    display: inline-block;
+}
+
+.header-menu li {
+    float: left;
+    list-style: none;
+}
+
+.header-menu a {
+    display: block;
+    padding: 0 15px;
+    line-height: 40px;
+    font-size: 25px;
+    color: linen;
+}
+
+.header-menu a:hover {
+    background: #5cb85c;
+}
+
+.header-menu a:active {
+    color: linen;
 }
