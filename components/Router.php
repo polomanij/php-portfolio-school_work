@@ -21,6 +21,8 @@ class Router {
         $uri = $_SERVER['REQUEST_URI'];
         
         if (!empty($uri)) {
+            $uri = explode('index.php', $uri)[1];
+            if (empty($uri)) $uri = '';
             return trim($uri, '/');
         }
     }
@@ -35,14 +37,11 @@ class Router {
         foreach ($this->routes as $uriPattern => $path) {
             //Comparing uri by uriPattern
             if (preg_match("~$uriPattern~", $uri)) {
-                echo $uri."<br>";
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
-                echo $internalRoute." <br>";
                 $segments = explode("/", $internalRoute);
                 
                 //Getting controller name and action name
                 $controllerName = ucfirst(array_shift($segments)).'Controller';
-                echo "$controllerName";
                 $actionName = 'action'.ucfirst(array_shift($segments));
                 
                 //Including controller file
@@ -54,7 +53,7 @@ class Router {
                 
                 //Creating controller object and calling of It.
                 //Result of controller calling writes in $result
-                //Variable $segments stores parameters
+                //Variable $segments stores parameters array
                 $controllerObject = new $controllerName();
                 $result = call_user_func_array(array($controllerObject, $actionName), $segments);
                 
