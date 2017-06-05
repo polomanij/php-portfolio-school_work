@@ -15,6 +15,11 @@ h1 {
     margin-bottom: 25px;
 }
 
+.wrap {
+    width: 980px;
+    margin: 0 auto;
+}
+
 header {
     min-height: 75px;
     background: coral;
@@ -49,4 +54,19 @@ header {
 
 .header-menu a:active {
     color: linen;
+}
+
+.about {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.about-wrap {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.main-page {
+    width: 600px;
+    margin: 0 auto;
 }

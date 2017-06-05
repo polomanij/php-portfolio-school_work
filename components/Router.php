@@ -21,8 +21,6 @@ class Router {
         $uri = $_SERVER['REQUEST_URI'];
         
         if (!empty($uri)) {
-            $uri = explode('index.php', $uri)[1];
-            if (empty($uri)) $uri = '';
             return trim($uri, '/');
         }
     }
@@ -32,7 +30,7 @@ class Router {
      */
         public function run()
     {
-        $uri = $this->getURI();
+    $uri = $this->getURI();
         
         foreach ($this->routes as $uriPattern => $path) {
             //Comparing uri by uriPattern
@@ -53,7 +51,7 @@ class Router {
                 
                 //Creating controller object and calling of It.
                 //Result of controller calling writes in $result
-                //Variable $segments stores parameters array
+                //Variable $segments stores parameters in array
                 $controllerObject = new $controllerName();
                 $result = call_user_func_array(array($controllerObject, $actionName), $segments);
                 
